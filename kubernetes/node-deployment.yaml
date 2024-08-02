@@ -1,0 +1,20 @@
+# node-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-microservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-microservice
+  template:
+    metadata:
+      labels:
+        app: node-microservice
+    spec:
+      containers:
+      - name: node-microservice
+        image: docker.io/guguskyler/node-microservice:latest
+        ports:
+        - containerPort: 3000
